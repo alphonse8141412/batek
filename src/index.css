@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 97%;
+    --foreground: 160 10% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 160 10% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 10% 15%;
+
+    --primary: 152 69% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 152 30% 95%;
+    --secondary-foreground: 152 69% 30%;
+
+    --muted: 150 10% 94%;
+    --muted-foreground: 160 8% 50%;
+
+    --accent: 30 95% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 40 95% 55%;
+    --warning-foreground: 40 95% 20%;
+
+    --success: 152 69% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 150 15% 90%;
+    --input: 150 15% 90%;
+    --ring: 152 69% 40%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 152 69% 25%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 152 69% 25%;
+    --sidebar-accent: 152 50% 30%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 152 50% 30%;
+    --sidebar-ring: 0 0% 100%;
+
+    --chart-production: 152 69% 40%;
+    --chart-consumption: 30 95% 55%;
+    --chart-line-1: 152 69% 40%;
+    --chart-line-2: 30 95% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Removed iPhone frame styles - app is now directly responsive */
+
+/* Bottom nav */
+.bottom-nav {
+  background: hsl(var(--card));
+  border-top: 1px solid hsl(var(--border));
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8px 0;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 10px;
+  color: hsl(var(--muted-foreground));
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.bottom-nav-item.active {
+  color: hsl(var(--primary));
+}
+
+.bottom-nav-item.active .nav-icon-bg {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.nav-icon-bg {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+/* Status badges */
+.badge-optimal {
+  background: hsl(152 69% 95%);
+  color: hsl(var(--primary));
+}
+
+.badge-actif {
+  background: hsl(152 69% 95%);
+  color: hsl(var(--primary));
+}
+
+.badge-critique {
+  background: hsl(0 80% 95%);
+  color: hsl(var(--destructive));
+}
+
+.badge-vigilance {
+  background: hsl(40 95% 93%);
+  color: hsl(var(--warning-foreground));
+}
+
+.badge-sensible {
+  background: hsl(40 95% 93%);
+  color: hsl(var(--accent));
+}
+
+.badge-maintenance {
+  background: hsl(40 95% 93%);
+  color: hsl(var(--accent));
+}
+
+/* Alert cards */
+.alert-critique-card {
+  background: hsl(0 80% 96%);
+  border: 1px solid hsl(0 80% 85%);
+  border-left: 4px solid hsl(var(--destructive));
+}
+
+.alert-vigilance-card {
+  background: hsl(40 95% 96%);
+  border: 1px solid hsl(40 95% 85%);
+  border-left: 4px solid hsl(var(--accent));
+}
+
+.alert-gaz-card {
+  background: hsl(30 95% 96%);
+  border: 1px solid hsl(30 95% 85%);
+  border-left: 4px solid hsl(var(--accent));
+}
+
+/* Capacity bar */
+.capacity-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: hsl(var(--muted));
+  overflow: hidden;
+}
+
+.capacity-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: hsl(var(--primary));
+  transition: width 0.5s ease;
+}
+
+.capacity-bar-fill.warning {
+  background: hsl(var(--accent));
+}
